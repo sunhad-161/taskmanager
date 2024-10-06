@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #00D0FF, #E3E3E3);
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.board {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.column {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 30%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.column-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.task-card {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.task-card:hover {
+    -webkit-transform: rotateZ(1.5deg);
+    -ms-transform: rotateZ(1.5deg);
+    transform: rotateZ(1.5deg);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.task-label {
+    font-size: 14px;
+    color: #333;
+    background-color: #ddeeff;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.del-card{
+	background: #d98b8b;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+	width: 26px;
+	height: 26px;
+    font-size: 14px;
+    box-shadow: 0 5px 0 #d6d6d6;
+}
+
+.del-card:hover {
+    background: #ad5f5f;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+}
+
+.task-details {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task-footer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.add-card {
+    background: none;
+    border: none;
+    border-radius: 8px;
+	height: 25px;
+	width: 155px;
+    color: #007bff;
+    background: #f0f0f0;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    box-shadow: 0 5px 0 #d6d6d6;
+}
+
+.add-card:hover {
+    background: #d6d6d6;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.edit-textarea {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    resize: none; /* Запретить изменение размера */
+}
+
+.task-column {
+    border: 2px dashed transparent;
+}
+
+.task-column.drag-over {
+    border-color: #4caf50; /* Цвет выделения */
+}

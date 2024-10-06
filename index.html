@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Доска</div>
+    </div>
+
+    <div class="board">
+        <div class="column" id="to-do" ondragover="allowDrop(event)" ondrop="drop(event, 'to-do')">
+            <div class="column-title" id="to-do-column">Задачи</div>
+            <div class="task-card" id="task-1" draggable="true" ondragstart="drag(event)">
+                <div class="task-header">
+                    <div class="task-label" onclick="editTask(this)">Дизайн</div>
+					<button class="del-card" onclick="deleteCard('task-1')">Х</button>
+                </div>
+                <div class="task-details" onclick="editDetails(this)">
+                    <span>Выполнено: 0/5</span>
+                    <span>Дедлайн: 3.01</span>
+                </div>
+            </div>
+            <button class="add-card" onclick="addCard('to-do-column')">+ Добавить задачу</button>
+        </div>
+
+        <div class="column" id="doing" ondragover="allowDrop(event)" ondrop="drop(event, 'doing')">
+            <div class="column-title" id="doing-column">В процессе</div>
+            <div class="task-card" id="task-2" draggable="true" ondragstart="drag(event)">
+                <div class="task-header">
+                    <div class="task-label" onclick="editTask(this)">Разработка</div>
+					<button class="del-card" onclick="deleteCard('task-2')">Х</button>
+                </div>
+                <div class="task-details" onclick="editDetails(this)">
+                    <span>Выполнение: 2/3</span>
+                    <span>Дедлайн: 4.01</span>
+                </div>
+            </div>
+            <button class="add-card" onclick="addCard('doing-column')">+ Добавить задачу</button>
+        </div>
+
+        <div class="column" id="done" ondragover="allowDrop(event)" ondrop="drop(event, 'done')">
+            <div class="column-title" id="done-column">Готово</div>
+            <div class="task-card" id="task-3" draggable="true" ondragstart="drag(event)">
+                <div class="task-header">
+                    <div class="task-label" onclick="editTask(this)">Тестирование</div>
+					<button class="del-card" onclick="deleteCard('task-3')">Х</button>
+                </div>
+                <div class="task-details" onclick="editDetails(this)">
+                    <span>Выполнение: 2/2</span>
+                    <span>Дедлайн: 6.01</span>
+                </div>
+            </div>
+            <button class="add-card" onclick="addCard('done-column')">+ Добавить задачу</button>
+        </div>
+    </div>
+	
+	<script src="script.js"></script>
+</body>
+</html>
