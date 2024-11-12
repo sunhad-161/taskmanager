@@ -19,10 +19,14 @@
                     <div class="task-label" onclick="editTask(this)">Дизайн</div>
 					<button class="del-card" onclick="deleteCard('task-1')">Х</button>
                 </div>
-                <div class="task-details" onclick="editDetails(this)">
-                    <span>Выполнено: 0/5</span>
-                    <span>Дедлайн: 3.01</span>
-                </div>
+				<div class="subtasks">
+					<!-- Сюда будут добавляться подзадачи -->
+				</div>
+				<div class="task-details">
+					<span>Выполнено: <span class="completed-tasks">0</span>/<span class="total-tasks">0</span></span>
+					<span onclick="editDetails(this)">Дедлайн: 3.01</span>
+				</div>
+				<button class="add-btn" onclick="addSubtask(this)">+</button>
             </div>
             <button class="add-card" onclick="addCard('to-do-column')">+ Добавить задачу</button>
         </div>
@@ -34,10 +38,14 @@
                     <div class="task-label" onclick="editTask(this)">Разработка</div>
 					<button class="del-card" onclick="deleteCard('task-2')">Х</button>
                 </div>
-                <div class="task-details" onclick="editDetails(this)">
-                    <span>Выполнение: 2/3</span>
-                    <span>Дедлайн: 4.01</span>
-                </div>
+				<div class="subtasks">
+					<!-- Сюда будут добавляться подзадачи -->
+				</div>
+				<div class="task-details">
+					<span>Выполнено: <span class="completed-tasks">0</span>/<span class="total-tasks">0</span></span>
+					<span onclick="editDetails(this)">Дедлайн: 6.01</span>
+				</div>
+				<button class="add-btn" onclick="addSubtask(this)">+</button>
             </div>
             <button class="add-card" onclick="addCard('doing-column')">+ Добавить задачу</button>
         </div>
@@ -49,10 +57,14 @@
                     <div class="task-label" onclick="editTask(this)">Тестирование</div>
 					<button class="del-card" onclick="deleteCard('task-3')">Х</button>
                 </div>
-                <div class="task-details" onclick="editDetails(this)">
-                    <span>Выполнение: 2/2</span>
-                    <span>Дедлайн: 6.01</span>
-                </div>
+				<div class="subtasks">
+					<!-- Сюда будут добавляться подзадачи -->
+				</div>
+				<div class="task-details">
+					<span>Выполнено: <span class="completed-tasks">0</span>/<span class="total-tasks">0</span></span>
+					<span onclick="editDetails(this)">Дедлайн: 10.01</span>
+				</div>
+				<button class="add-btn" onclick="addSubtask(this)">+</button>
             </div>
             <button class="add-card" onclick="addCard('done-column')">+ Добавить задачу</button>
         </div>

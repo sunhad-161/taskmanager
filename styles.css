@@ -26,6 +26,7 @@ body {
 .board {
     display: flex;
     justify-content: space-between;
+	align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -48,12 +49,6 @@ body {
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 10px;
-}
-
-.task-card:hover {
-    -webkit-transform: rotateZ(1.5deg);
-    -ms-transform: rotateZ(1.5deg);
-    transform: rotateZ(1.5deg);
 }
 
 .task-header {
@@ -151,4 +146,30 @@ body {
 
 .task-column.drag-over {
     border-color: #4caf50; /* Цвет выделения */
+}
+
+.task-card, .column {
+    transition: transform 0.2s ease;
+}
+
+.task-card.dragging, .column.dragging {
+    transform: scale(1.05);
+}
+
+.add-btn{
+	background: #8bd98b;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+	width: 26px;
+	height: 26px;
+    font-size: 14px;
+    box-shadow: 0 5px 0 #d6d6d6;
+}
+
+.add-btn:hover {
+    background: #5fad5f;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
 }

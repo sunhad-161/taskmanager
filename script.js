@@ -4,10 +4,14 @@ let taskIdCounter = 4;
 // Глобальная переменная для хранения ID перетаскиваемой карточки
 let draggedTaskId = null;
 
+//подсчет колонок
+let columnCounter = 4;
+
 // Функция для начала перетаскивания карточки
 function drag(event) {
     draggedTaskId = event.target.id; // Сохраняем id перетаскиваемой карточки
     event.dataTransfer.effectAllowed = 'move'; // Разрешаем перемещение
+    event.target.classList.add('dragging'); //анимация перемещения
 }
 
 // Функция для разрешения сброса карточки (по умолчанию сброс запрещён)
@@ -20,6 +24,7 @@ function allowDrop(event) {
 function drop(event, columnId) {
     event.preventDefault(); // Отменяем стандартное поведение
 	event.currentTarget.classList.remove('drag-over'); // Убираем выделение при сбросе
+    event.target.classList.remove('dragging'); //анимация перемещения
     
     // Получаем перетаскиваемую карточку и колонку, куда её сбрасывают
     const draggedTask = document.getElementById(draggedTaskId);
@@ -52,13 +57,17 @@ function addCard(columnId) {
     
     newCard.innerHTML = `
         <div class="task-header">
-            <div class="task-label" onclick="editTask(this)">Новая задача</div>
-			<button class="del-card" onclick="deleteCard('`+ taskId + `')">Х</button>
-        </div>
-        <div class="task-details" onclick="editDetails(this)">
-            <span>0/0</span>
-			<span>--</span>
-        </div>
+			<div class="task-label" onclick="editTask(this)">Новая задача</div>
+				<button class="del-card" onclick="deleteCard('`+ taskId + `')">Х</button>
+			</div>
+			<div class="subtasks">
+				<!-- Сюда будут добавляться подзадачи -->
+			</div>
+			<div class="task-details">
+				<span>Выполнено: <span class="completed-tasks">0</span>/<span class="total-tasks">0</span></span>
+				<span onclick="editDetails(this)">Дедлайн: dd.mm</span>
+			</div>
+		<button class="add-btn" onclick="addSubtask(this)">+</button>
     `;
 
     // Находим кнопку "Добавить задачу" и вставляем карточку перед ней
@@ -144,4 +153,38 @@ function finishEditing() {
 function deleteCard(CardId){
 	const element = document.getElementById(CardId);
 	element.remove();
+}
+
+//функция добавления подзадачи
+function addSubtask(taskCardElement) {
+    const subtasksContainer = taskCardElement.parentNode.querySelector('.subtasks');
+    const subtask = document.createElement('div');
+    subtask.classList.add('subtask');
+    
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('change', updateTaskCompletion);
+    
+    const label = document.createElement('input');
+    label.type = 'text';
+    label.value = 'Новая подзадача';
+    label.classList.add('edit-input');
+    
+    subtask.appendChild(checkbox);
+    subtask.appendChild(label);
+    subtasksContainer.appendChild(subtask);
+    
+    updateTaskCompletion();
+}
+
+//подсчет выполненых подзадач
+function updateTaskCompletion() {
+    const taskCards = document.querySelectorAll('.task-card');
+    taskCards.forEach(card => {
+        const subtasks = card.querySelectorAll('.subtask input[type="checkbox"]');
+        const completedSubtasks = Array.from(subtasks).filter(checkbox => checkbox.checked).length;
+        
+        card.querySelector('.completed-tasks').textContent = completedSubtasks;
+        card.querySelector('.total-tasks').textContent = subtasks.length;
+    });
 }
