@@ -112,11 +112,12 @@ function editTask(taskLabel) {
 }
 
 // Функция для редактирования деталей карточки (в одном поле)
-function editDetails(taskDetails) {
+function editDate(taskDetails) {
     const currentDetails = taskDetails.innerText; // Получаем текущие детали как текст
 
     // Создаем текстовое поле для редактирования всех деталей
-    const textarea = document.createElement('textarea');
+    const textarea = document.createElement('input');
+	textarea.type = 'date';
     textarea.value = currentDetails;
     textarea.classList.add('edit-textarea');
 
@@ -126,17 +127,22 @@ function editDetails(taskDetails) {
 
 // Завершаем редактирование при потере фокуса или нажатии Enter
 function finishEditing() {
-        const newDetails = textarea.value;
+	// Пишем новое значение поля
+        const rawDetales = textarea.value;
+		const dd = rawDetales[8] + rawDetales[9];
+		const mm = rawDetales[5] + rawDetales[6];
+		const yy = rawDetales[2] + rawDetales[3];
+		const newDetails = dd + "." + mm + "." + yy;
 
         // Создаем элемент с обновленными деталями
         const updatedDetails = document.createElement('span');
+		updatedDetails.fontcolor = "#ad6b6b";
         updatedDetails.innerText = newDetails;
         taskDetails.innerHTML = '';
         taskDetails.appendChild(updatedDetails);
-        taskDetails.setAttribute('onclick', 'editDetails(this)'); // Добавляем возможность редактирования
 
         // Возвращаем событие клика для редактирования
-        taskDetails.setAttribute('onclick', 'editDetails(this)');
+        taskDetails.setAttribute('onclick', 'editDate(this)');
     }
 
     // При потере фокуса или нажатии Enter сохраняем изменения
@@ -164,14 +170,20 @@ function addSubtask(taskCardElement) {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.addEventListener('change', updateTaskCompletion);
+    checkbox.classList.add('checkbox');
     
     const label = document.createElement('input');
     label.type = 'text';
     label.value = 'Новая подзадача';
     label.classList.add('edit-input');
+	
+	const cross = document.createElement('button');
+	cross.textContent = "X";
+	cross.classList.add('cross');
     
     subtask.appendChild(checkbox);
     subtask.appendChild(label);
+	subtask.appendChild(cross);
     subtasksContainer.appendChild(subtask);
     
     updateTaskCompletion();
