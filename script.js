@@ -164,7 +164,9 @@ function deleteCard(CardId){
 //функция добавления подзадачи
 function addSubtask(taskCardElement) {
     const subtasksContainer = taskCardElement.parentNode.querySelector('.subtasks');
+	const subtaskId = `subtask-${taskIdCounter++}`;
     const subtask = document.createElement('div');
+	subtask.setAttribute('id', subtaskId);
     subtask.classList.add('subtask');
     
     const checkbox = document.createElement('input');
@@ -180,6 +182,7 @@ function addSubtask(taskCardElement) {
 	const cross = document.createElement('button');
 	cross.textContent = "X";
 	cross.classList.add('cross');
+	cross.addEventListener('click', () => removeCross(subtaskId));
     
     subtask.appendChild(checkbox);
     subtask.appendChild(label);
@@ -187,6 +190,12 @@ function addSubtask(taskCardElement) {
     subtasksContainer.appendChild(subtask);
     
     updateTaskCompletion();
+}
+
+//Функция удаления подзадачи
+function removeCross(subtaskId){
+	const element = document.getElementById(subtaskId);
+	element.remove();
 }
 
 //подсчет выполненых подзадач
