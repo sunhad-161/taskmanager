@@ -65,7 +65,7 @@ function addCard(columnId) {
 			</div>
 			<div class="task-details">
 				<span>Выполнено: <span class="completed-tasks">0</span>/<span class="total-tasks">0</span></span>
-				<span onclick="editDetails(this)">Дедлайн: dd.mm</span>
+				<span>Дедлайн: <span onclick="editDate(this)">dd.mm</span></span>
 			</div>
 		<button class="add-btn" onclick="addSubtask(this)">+</button>
     `;
